@@ -1141,26 +1141,46 @@ textarea:focus-visible {
   }
 
   .menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0.6rem;
-    right: 0.6rem;
-    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: none;
+    max-height: calc(100dvh - 80px);
+    overflow-y: auto;
+    display: flex;
     align-items: stretch;
     flex-direction: column;
-    gap: 0.2rem;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
-    padding: 0.5rem;
-    background: rgba(12, 18, 32, 0.97);
+    gap: 0.45rem;
+    border: 0;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0;
+    padding: 1rem 1rem calc(1.2rem + env(safe-area-inset-bottom));
+    background:
+      linear-gradient(165deg, rgba(14, 23, 40, 0.995) 0%, rgba(7, 12, 22, 0.995) 100%);
     backdrop-filter: blur(24px);
-    box-shadow: var(--shadow-lg);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+    z-index: 55;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top center;
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease,
+      visibility 220ms ease;
   }
 
   .menu a {
     color: var(--ink-secondary);
-    padding: 0.75rem 0.8rem;
-    border-radius: 10px;
+    padding: 1rem;
+    border-radius: 14px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    width: 100%;
   }
 
   .menu a:hover {
@@ -1168,13 +1188,23 @@ textarea:focus-visible {
     background: var(--accent-soft);
   }
 
+  .menu a:active {
+    transform: translateY(1px);
+  }
+
   .menu .btn {
     width: 100%;
-    margin-top: 0.3rem;
+    margin-top: 0.55rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1rem;
   }
 
   .menu.is-open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
   }
 
   .hero {
