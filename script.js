@@ -188,27 +188,6 @@ window.addEventListener("resize", () => {
 window.addEventListener("load", syncHeroMediaHeight);
 syncHeroMediaHeight();
 
-/* ── Hide mobile WhatsApp CTA on scroll up ── */
-const mobileWaCta = document.querySelector(".mobile-wa-cta");
-
-if (mobileWaCta) {
-  let lastScrollY = window.scrollY;
-
-  window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY < lastScrollY) {
-      mobileWaCta.style.opacity = "0";
-      mobileWaCta.style.pointerEvents = "none";
-    } else {
-      mobileWaCta.style.opacity = "1";
-      mobileWaCta.style.pointerEvents = "auto";
-    }
-
-    lastScrollY = currentScrollY;
-  }, { passive: true });
-}
-
 /* ── Reveal animations with IntersectionObserver ── */
 const revealElements = document.querySelectorAll(".reveal");
 
